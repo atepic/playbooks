@@ -1,0 +1,5 @@
+---
+  - hosts: template.lab.local
+    task:
+      - name: "update hostname of template"
+        hostname: "new_hosname"
