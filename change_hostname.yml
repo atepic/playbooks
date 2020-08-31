@@ -1,5 +1,7 @@
 ---
   - hosts: template.lab.local
+    vars: 
+      new_hosname: 
     task:
       - name: "update hostname of template"
-        hostname: "new_hosname"
+        hostname: "{{new_hosname}}"
