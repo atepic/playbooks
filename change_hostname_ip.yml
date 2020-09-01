@@ -1,0 +1,20 @@
+---
+  - hosts: template.lab.local
+    become: yes
+    vars: 
+      new_hostname: ansible-node02
+      new_ip: 10.0.0.112 
+    tasks:
+    - name: "update hostname of template"
+      hostname: 
+        name: "{{new_hostname}}"
+    - name: "change ip"
+      nmcli: 
+        conn_name: "ens192"
+        state: present  
+        ip4: "{{new_ip}}"
+        type: ethernet
+    - name: "restart network service"
+      service: 
+        name: network
+        state: restarted     
